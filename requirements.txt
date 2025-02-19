@@ -1,0 +1,14 @@
+nvitop
+utils
+jsonargparse[signatures,urls]>=4.3.1
+torchmetrics[audio]
+omegaconf
+pytorch-lightning>=2.0.0
+torch>=1.12.1
+rich
+mir_eval
+soundfile
+pesq
+tensorboard
+pandas
+torcheval==0.0.6
