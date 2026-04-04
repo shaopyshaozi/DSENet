@@ -3,9 +3,9 @@ seed_everything: 42
 trainer:
   accelerator: gpu
   strategy: auto
-  devices: 0,1,
+  devices: 1,
   num_nodes: 1
-  precision: bf16-mixed
+  precision: 16-mixed
   logger: null
   callbacks: null
   fast_dev_run: false

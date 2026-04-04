@@ -38,7 +38,27 @@ from models.utils.my_save_config_callback import MySaveConfigCallback as SaveCon
 from models.utils.my_earlystopping import MyEarlyStopping as EarlyStopping
 from models.arch.DSENet import DSENet
 
+import soundfile as sf
+from scipy.signal import resample_poly
 
+
+
+def load_audio_file(path: str, target_sr: int):
+    wav, sr = sf.read(path, always_2d=True)   # [T, C]
+    wav = wav.T.astype(np.float32)            # [C, T]
+
+    if sr != target_sr:
+        resampled = []
+        gcd = np.gcd(sr, target_sr)
+        up = target_sr // gcd
+        down = sr // gcd
+        for ch in wav:
+            resampled_ch = resample_poly(ch, up, down).astype(np.float32)
+            resampled.append(resampled_ch)
+        wav = np.stack(resampled, axis=0)
+        sr = target_sr
+
+    return torch.from_numpy(wav), sr
 
 
 class MultimicDataset(Dataset):
@@ -58,21 +78,22 @@ class MultimicDataset(Dataset):
         clean_file = os.path.join(self.clean_dir, self.clean_wav_name[idx])
         parts = self.clean_wav_name[idx].split("_") #clean_fileid_0_doa0_spk1.wav
 
+        parent_name = os.path.basename(os.path.dirname(self.data_dir))
+        dataset_tag = parent_name.split('_')[-1]
+
         if parts[4][0:5] == 'width':
-            noisy_file = os.path.join(self.noisy_dir, f"mic_{parts[1]}_{parts[2]}_{parts[3]}_{parts[4]}_{self.data_dir.split('/')[-2].split('_')[-1]}.wav")
+            noisy_file = os.path.join(
+                self.noisy_dir,
+                f"mic_{parts[1]}_{parts[2]}_{parts[3]}_{parts[4]}_{dataset_tag}.wav"
+            )
         else:
-            noisy_file = os.path.join(self.noisy_dir, f"mic_{parts[1]}_{parts[2]}_{parts[3]}_{self.data_dir.split('/')[-2].split('_')[-1]}.wav")
+            noisy_file = os.path.join(
+                self.noisy_dir,
+                f"mic_{parts[1]}_{parts[2]}_{parts[3]}_{dataset_tag}.wav"
+            )
 
-
-
-        clean_ds, sr = torchaudio.load(clean_file)
-        noisy_ds, sr = torchaudio.load(noisy_file)
-
-        if sr != self.sample_rate:
-            transform = Resample(orig_freq=sr, new_freq=self.sample_rate)
-            clean_ds = transform(clean_ds)
-            noisy_ds = transform(noisy_ds)
-            sr = self.sample_rate
+        clean_ds, sr = load_audio_file(clean_file, self.sample_rate)
+        noisy_ds, sr = load_audio_file(noisy_file, self.sample_rate)
 
         length = len(clean_ds[0])
         assert length == len(noisy_ds[0])

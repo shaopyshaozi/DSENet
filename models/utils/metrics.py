@@ -9,7 +9,7 @@ import torch
 import pesq as pesq_backend
 import numpy as np
 from typing import *
-from models.utils.dnsmos import deep_noise_suppression_mean_opinion_score
+#from models.utils.dnsmos import deep_noise_suppression_mean_opinion_score
 
 ALL_AUDIO_METRICS = ['SDR', 'SI_SDR', 'SI_SNR', 'SNR', 'NB_PESQ', 'WB_PESQ', 'STOI', 'DNSMOS', 'pDNSMOS']
 

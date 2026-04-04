@@ -1,0 +1,22 @@
+/data
+/__pycache__
+/logs
+/models/__pycache__
+/models/io/__pycache__
+/models/arch/base/__pycache__
+/venv
+models/arch/__pycache__/DSENet.cpython-310.pyc
+models/utils/__pycache__/__init__.cpython-310.pyc
+models/utils/__pycache__/base_cli.cpython-310.pyc
+models/utils/__pycache__/ensemble.cpython-310.pyc
+models/utils/__pycache__/flops.cpython-310.pyc
+models/utils/__pycache__/general_steps.cpython-310.pyc
+models/utils/__pycache__/git_tools.cpython-310.pyc
+models/utils/__pycache__/metrics.cpython-310.pyc
+models/utils/__pycache__/my_earlystopping.cpython-310.pyc
+models/utils/__pycache__/my_json_encoder.cpython-310.pyc
+models/utils/__pycache__/my_logger.cpython-310.pyc
+models/utils/__pycache__/my_progress_bar.cpython-310.pyc
+models/utils/__pycache__/my_rich_progress_bar.cpython-310.pyc
+models/utils/__pycache__/my_save_config_callback.cpython-310.pyc
+code summary.docx
