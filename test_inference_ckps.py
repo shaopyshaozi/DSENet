@@ -12,8 +12,9 @@ from models.arch.DSENet import DSENet
 # =========================
 # CONFIG
 # =========================
-ckpt_path = "last.ckpt"  # <-- change this
-audio_path = "mic_fileid_0_doa48_6spk.wav"  # <-- change this
+ckpt_path = "last.ckpt"  
+audio_path = "mic_fileid_0_doa48_6spk.wav"  
+#device = "cpu"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 print("Device:", device)
