@@ -81,9 +81,9 @@ def cal_metrics_functional(
         # elif m.upper() == 'NB_PESQ':
         #     metric_func = lambda: perceptual_evaluation_speech_quality(preds_cpu, target_cpu, fs, 'nb', n_processes=0)
         #     input_metric_func = lambda: perceptual_evaluation_speech_quality(original_cpu, target_cpu, fs, 'nb', n_processes=0)
-        # elif m.upper() == 'WB_PESQ':
-        #     metric_func = lambda: perceptual_evaluation_speech_quality(preds_cpu, target_cpu, fs, 'wb', n_processes=0)
-        #     input_metric_func = lambda: perceptual_evaluation_speech_quality(original_cpu, target_cpu, fs, 'wb', n_processes=0)
+        elif m.upper() == 'WB_PESQ':
+            metric_func = lambda: perceptual_evaluation_speech_quality(preds_cpu, target_cpu, fs, 'wb', n_processes=0)
+            input_metric_func = lambda: perceptual_evaluation_speech_quality(original_cpu, target_cpu, fs, 'wb', n_processes=0)
         # elif m.upper() == 'STOI':
         #     metric_func = lambda: short_time_objective_intelligibility(preds_cpu, target_cpu, fs)
         #     input_metric_func = lambda: short_time_objective_intelligibility(original_cpu, target_cpu, fs)

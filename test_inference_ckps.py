@@ -12,8 +12,8 @@ from models.arch.DSENet import DSENet
 # =========================
 # CONFIG
 # =========================
-ckpt_path = "last.ckpt"  
-audio_path = "mic_fileid_0_doa48_6spk.wav"  
+ckpt_path = "epoch50_loss1.2376_neg_si_sdr-0.2642.ckpt"  
+audio_path = "mic_fileid_1_doa32_6spk.wav"  
 #device = "cpu"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -99,7 +99,7 @@ if device == "cuda":
 enhanced = y_hat.squeeze(0).squeeze(0).detach().cpu().numpy()
 
 # Save result
-save_path = "inference_output.wav"  # optional
+save_path = "inference_output_new.wav"  # optional
 sf.write(save_path, enhanced, sr)
 print(f"Saved enhanced audio to: {save_path}")
 
