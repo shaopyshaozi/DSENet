@@ -78,9 +78,9 @@ def scalar_only(d):
 def main():
     ckpt_path = r"D:\邵鹏远\UCL\博1\code\DSENet\logs\DSENet\version_9\checkpoints\epoch98_loss1.0465_neg_si_sdr-0.5227.ckpt"
 
-    clean_dir = r"D:\邵鹏远\UCL\博1\code\Whisper_ASR\data\dataset_3mic_3spk_dominant\Eval\clean"
-    noisy_dir = r"D:\邵鹏远\UCL\博1\code\Whisper_ASR\data\dataset_3mic_3spk_dominant\Eval\mic"
-    save_enhanced_dir = r"D:\邵鹏远\UCL\博1\code\DSENet\eval\enhanced_wer_3mics_dominant"
+    clean_dir = r"D:\邵鹏远\UCL\博1\code\Whisper_ASR\data\dataset_4mic_3spk_dominant\Eval\clean"
+    noisy_dir = r"D:\邵鹏远\UCL\博1\code\Whisper_ASR\data\dataset_4mic_3spk_dominant\Eval\mic"
+    save_enhanced_dir = r"D:\邵鹏远\UCL\博1\code\DSENet\eval\enhanced_wer_4mics_dominant"
 
     os.makedirs(save_enhanced_dir, exist_ok=True)
 
