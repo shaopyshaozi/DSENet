@@ -38,3 +38,5 @@ data/dataset_3mic_6spk.tar
 /data/DEMAND
 /data/LibriSpeech
 /data/raw
+/data/dataset_4mic_6spk
+data/dataset_4mic_6spk.tar

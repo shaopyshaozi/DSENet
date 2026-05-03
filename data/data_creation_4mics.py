@@ -176,13 +176,21 @@ def respeaker_4mic_positions_3d(
     radius: float = 0.031,
 ) -> np.ndarray:
     """
-    ReSpeaker-like 4-mic layout.
+    ReSpeaker 4-mic physical geometry.
 
-    Returns shape [3, 4] for pyroomacoustics.
-    Mic angles:
-        0, 90, 180, 270 degrees
+    Coordinate convention from Seeed image:
+        DOA 0   = right  (+x)
+        DOA 90  = top    (+y)
+        DOA 180 = left   (-x)
+        DOA 270 = bottom (-y)
+
+    Mic physical positions:
+        MIC1 = 45 deg
+        MIC2 = 135 deg
+        MIC3 = 225 deg
+        MIC4 = 315 deg
     """
-    mic_angles = [0, 90, 180, 270]
+    mic_angles = [45, 135, 225, 315]
 
     mic_positions = np.stack(
         [
