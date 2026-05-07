@@ -19,7 +19,7 @@ models/utils/__pycache__/my_progress_bar.cpython-310.pyc
 models/utils/__pycache__/my_rich_progress_bar.cpython-310.pyc
 models/utils/__pycache__/my_save_config_callback.cpython-310.pyc
 code summary.docx
-/eval/enhanced_val
+/eval/enhanced_val_3mics
 /eval/enhanced_wer
 mic_fileid_1_doa32_6spk.wav
 mic_fileid_14_doa135_6spk.wav
@@ -40,3 +40,5 @@ data/dataset_3mic_6spk.tar
 /data/raw
 /data/dataset_4mic_6spk
 data/dataset_4mic_6spk.tar
+/eval/enhanced_val_4mics
+/eval/enhanced_wer_4mics

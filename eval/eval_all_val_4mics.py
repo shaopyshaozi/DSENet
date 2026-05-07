@@ -78,9 +78,9 @@ def scalar_only(d):
 def main():
     ckpt_path = r"D:\邵鹏远\UCL\博1\code\DSENet\logs\DSENet\version_11\checkpoints\epoch96_loss-3.4198_neg_si_sdr-7.3765.ckpt"
 
-    clean_dir = r"D:\邵鹏远\UCL\博1\code\Whisper_ASR\data\dataset_4mic_3spk_dominant\Eval\clean"
-    noisy_dir = r"D:\邵鹏远\UCL\博1\code\Whisper_ASR\data\dataset_4mic_3spk_dominant\Eval\mic"
-    save_enhanced_dir = r"D:\邵鹏远\UCL\博1\code\DSENet\eval\enhanced_wer_4mics_dominant"
+    clean_dir = r"D:\邵鹏远\UCL\博1\code\DSENet\data\dataset_4mic_6spk\test\clean"
+    noisy_dir = r"D:\邵鹏远\UCL\博1\code\DSENet\data\dataset_4mic_6spk\test\mic"
+    save_enhanced_dir = r"D:\邵鹏远\UCL\博1\code\DSENet\eval\enhanced_val_4mics"
 
     os.makedirs(save_enhanced_dir, exist_ok=True)
 
@@ -121,7 +121,7 @@ def main():
     model.to(device)
     model.float()
 
-    dataset_tag = "3spk"
+    dataset_tag = "6spk"
     print("Dataset tag:", dataset_tag)
 
     clean_files = sorted(
@@ -148,9 +148,9 @@ def main():
             clean_ds, _ = load_audio_file(clean_path, sample_rate)
             noisy_ds, _ = load_audio_file(noisy_path, sample_rate)
 
-            # if clean_ds.shape[1] != noisy_ds.shape[1]:
-            #     print(f"[{idx}/{len(clean_files)}] Length mismatch: {clean_name}")
-            #     continue
+            if clean_ds.shape[1] != noisy_ds.shape[1]:
+                print(f"[{idx}/{len(clean_files)}] Length mismatch: {clean_name}")
+                continue
 
             if clean_ds.shape[0] == 1 and noisy_ds.shape[0] > 1:
                 clean_ds = clean_ds.repeat(noisy_ds.shape[0], 1)
